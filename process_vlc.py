@@ -21,7 +21,7 @@ def launchvideo(url, config, sub=False):
                                           new_log=config["new_log"]))
     thread.start()
 
-    # os.system("echo . > /tmp/cmd &")  # Start signal for OMXplayer
+    os.system("echo . > /tmp/cmd &")  # Start signal for OMXplayer
 
 
 def queuevideo(url, config, onlyqueue=False):
@@ -34,7 +34,7 @@ adding to queue.')
                                   kwargs=dict(width=config["width"], height=config["height"],
                                               new_log=config["new_log"]))
         thread.start()
-        # os.system("echo . > /tmp/cmd &")  # Start signal for OMXplayer
+        os.system("echo . > /tmp/cmd &")  # Start signal for OMXplayer
     else:
         if url is not None:
             with open('video.queue', 'a') as f:
@@ -93,7 +93,7 @@ def play_with_vlc(url, sub, width="", height="", new_log=False):
                                 new_log=new_log),
                 )
                 thread.start()
-                # os.system("echo . > /tmp/cmd &")  # Start signal for OMXplayer
+                os.system("echo . > /tmp/cmd &")  # Start signal for OMXplayer
             else:
                 logger.info("Playlist empty, skipping.")
                 if new_log:
