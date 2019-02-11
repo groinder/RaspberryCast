@@ -12,8 +12,6 @@ except ImportError:
     from urllib import urlretrieve
 from bottle import Bottle, SimpleTemplate, request, response, \
                    template, run, static_file
-from process import launchvideo, queuevideo, playlist, \
-                    setState, getState, setVolume
 
 if len(sys.argv) > 1:
     config_file = sys.argv[1]
@@ -21,6 +19,13 @@ else:
     config_file = 'raspberrycast.conf'
 with open(config_file) as f:
       config = json.load(f)
+
+if config['use_vlc']:
+    from process_vlc import launchvideo, queuevideo, playlist, \
+        setState, getState, setVolume
+else:
+    from process import launchvideo, queuevideo, playlist, \
+        setState, getState, setVolume
 
 # Setting log
 logging.basicConfig(
