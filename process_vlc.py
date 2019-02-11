@@ -143,7 +143,7 @@ def play_with_vlc(url, sub, width="", height="", new_log=False):
     logger.info("Starting VLC now.")
 
     setState("1")
-    os.system("vlc" + url)
+    os.system("vlc " + url)
 
     if getState() != "2":  # In case we are again in the launchvideo function
         setState("0")
